@@ -500,11 +500,15 @@ if (recruitPullTenBtn) recruitPullTenBtn.addEventListener("click", () => {
   requestRecruitPull(10);
 });
 if (recruitDoorFrame) recruitDoorFrame.addEventListener("pointerdown", handleRecruitDoorTap);
-if (recruitDoorCloseBtn) recruitDoorCloseBtn.addEventListener("pointerdown", (event) => {
+function handleRecruitDoorClose(event) {
   event.preventDefault();
   event.stopPropagation();
   hideRecruitDoorScene();
-});
+}
+if (recruitDoorCloseBtn) {
+  recruitDoorCloseBtn.addEventListener("pointerdown", handleRecruitDoorClose);
+  recruitDoorCloseBtn.addEventListener("click", handleRecruitDoorClose);
+}
 if (lobbyExitBtn) lobbyExitBtn.addEventListener("click", showTitle);
 if (shopBackBtn) shopBackBtn.addEventListener("click", showLobby);
 if (shopCloseBtn) shopCloseBtn.addEventListener("click", showLobby);
