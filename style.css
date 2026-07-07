@@ -17200,6 +17200,18 @@ body.in-formation .formation-screen {
   transform-origin: top left !important;
 }
 
+body.in-formation .formation-screen .formation-roster-panel,
+body.in-formation .formation-screen .formation-wallet-wide,
+body.in-formation .formation-screen .formation-hero-detail-top,
+body.in-formation .formation-screen .formation-hero-detail-card,
+body.in-formation .formation-screen .formation-hero-detail-list,
+body.in-formation .formation-screen .formation-growth-actions,
+body.in-formation .formation-screen .formation-growth-center-confirm,
+body.in-formation .formation-screen .formation-brand-panel,
+body.in-formation .formation-screen .formation-category-nav {
+  position: absolute !important;
+}
+
 /* Static lobby artwork: keep the navigation UI and remove the old animated scene. */
 .lobby-screen {
   background: #080b16 url("assets/lobby_bg.png") center / cover no-repeat;
