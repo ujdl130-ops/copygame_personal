@@ -216,6 +216,9 @@ function updateViewportScales() {
   if (typeof updateFormationViewportScale === "function") {
     updateFormationViewportScale();
   }
+  if (typeof updateMissionViewportScale === "function") {
+    updateMissionViewportScale();
+  }
 }
 
 window.addEventListener("resize", updateViewportScales);

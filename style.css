@@ -21,6 +21,11 @@
   --formation-viewport-scale: 1;
   --formation-viewport-offset-x: 0px;
   --formation-viewport-offset-y: 0px;
+  --mission-design-width: 1920px;
+  --mission-design-height: 900px;
+  --mission-viewport-scale: 1;
+  --mission-viewport-offset-x: 0px;
+  --mission-viewport-offset-y: 0px;
 }
 
 body {
@@ -16761,6 +16766,32 @@ body:not(.game-started) .game-wrap {
 
 .mission-screen .mission-card-foot button:not(.mission-reward-btn) {
   display: none !important;
+}
+
+/* Mission viewport fit: preserve the desktop column spacing on mobile. */
+body.in-mission {
+  display: block !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #000 url("assets/maps/formation/mission.png") center / cover no-repeat !important;
+}
+
+body.in-mission::before {
+  content: none !important;
+}
+
+body.in-mission .mission-screen {
+  inset: 0 auto auto 0 !important;
+  width: var(--mission-design-width) !important;
+  height: var(--mission-design-height) !important;
+  min-width: var(--mission-design-width) !important;
+  min-height: var(--mission-design-height) !important;
+  transform: translate(var(--mission-viewport-offset-x), var(--mission-viewport-offset-y)) scale(var(--mission-viewport-scale)) !important;
+  transform-origin: top left !important;
 }
 
 /* Inventory screen final background/content layout */
