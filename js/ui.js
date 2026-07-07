@@ -415,10 +415,21 @@ function updateBattleViewportScale() {
   const baseHeight = 540;
   const maxScale = 2;
   const viewport = window.visualViewport;
-  const availableWidth = Math.max(1, viewport ? viewport.width : window.innerWidth);
-  const availableHeight = Math.max(1, viewport ? viewport.height : window.innerHeight);
+  const doc = document.documentElement;
+  const availableWidth = Math.max(
+    1,
+    viewport ? viewport.width : 0,
+    doc ? doc.clientWidth : 0,
+    window.innerWidth || 0
+  );
+  const availableHeight = Math.max(
+    1,
+    viewport ? viewport.height : 0,
+    doc ? doc.clientHeight : 0,
+    window.innerHeight || 0
+  );
   const scale = Math.min(maxScale, availableWidth / baseWidth);
-  const frameHeight = Math.min(baseHeight, availableHeight / scale);
+  const frameHeight = Math.min(baseHeight, (availableHeight + 2) / scale);
   const rootStyle = document.documentElement.style;
 
   rootStyle.setProperty("--battle-visual-scale", scale.toFixed(4));

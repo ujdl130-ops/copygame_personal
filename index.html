@@ -604,6 +604,13 @@
   <!-- QA_MODE_SCRIPT: remove for release. -->
   <script src="js/qa.js"></script>
   <script>
+    const refreshBattleViewport = () => {
+      if (typeof updateBattleViewportScale === "function") {
+        requestAnimationFrame(updateBattleViewportScale);
+        window.setTimeout(updateBattleViewportScale, 250);
+      }
+    };
+
     const enterFullscreenMode = () => {
       const root = document.documentElement;
 
@@ -617,18 +624,19 @@
         });
       }
 
-      if (typeof updateBattleViewportScale === "function") {
-        requestAnimationFrame(updateBattleViewportScale);
-        window.setTimeout(updateBattleViewportScale, 250);
-      }
+      refreshBattleViewport();
     };
 
-    window.addEventListener("pointerdown", enterFullscreenMode, { once: true });
-    window.addEventListener("keydown", enterFullscreenMode, { once: true });
+    window.addEventListener("pointerdown", enterFullscreenMode);
+    window.addEventListener("click", enterFullscreenMode);
+    window.addEventListener("keydown", enterFullscreenMode);
+    document.addEventListener("fullscreenchange", refreshBattleViewport);
 
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
-        navigator.serviceWorker.register("./sw.js").catch((error) => {
+        navigator.serviceWorker.register("./sw.js").then((registration) => {
+          registration.update();
+        }).catch((error) => {
           console.warn("Service worker registration failed:", error);
         });
       });
