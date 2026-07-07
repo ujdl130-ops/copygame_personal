@@ -4,9 +4,11 @@
   "description": "A pixel arcade line defense game.",
   "start_url": "./index.html",
   "scope": "./",
-  "display": "standalone",
-  "background_color": "#101623",
-  "theme_color": "#c9a14a",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "landscape",
+  "background_color": "#000000",
+  "theme_color": "#000000",
   "icons": [
     {
       "src": "icons/icon-192.png",
