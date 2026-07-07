@@ -149,18 +149,28 @@ canvas {
 
 body.game-started:not(.in-lobby):not(.in-stage-select):not(.in-shop):not(.in-recruit):not(.in-formation) {
   align-items: flex-start;
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
   padding: 0;
+  background: #000;
   overflow: hidden;
 }
 
 body.game-started:not(.in-lobby):not(.in-stage-select):not(.in-shop):not(.in-recruit):not(.in-formation) .game-wrap {
+  position: fixed;
+  inset: 0 auto auto 0;
   width: var(--battle-visual-width);
   height: var(--battle-visual-height);
   max-width: none;
-  flex: 0 0 auto;
+  overflow: hidden;
 }
 
 body.game-started:not(.in-lobby):not(.in-stage-select):not(.in-shop):not(.in-recruit):not(.in-formation) .battle-stage-frame {
+  position: absolute;
+  left: 0;
+  top: 0;
   width: 960px;
   height: var(--battle-frame-height);
   max-width: none;
@@ -1586,6 +1596,7 @@ body.game-started:not(.in-lobby):not(.in-stage-select):not(.in-shop):not(.in-rec
   position: absolute;
   left: 0;
   right: 0;
+  top: auto;
   bottom: 0;
   z-index: 3;
   height: 126px;

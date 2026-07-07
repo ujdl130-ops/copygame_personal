@@ -212,7 +212,13 @@ window.addEventListener("keyup", (event) => {
 });
 
 window.addEventListener("resize", updateBattleViewportScale);
-window.addEventListener("orientationchange", updateBattleViewportScale);
+window.addEventListener("orientationchange", () => {
+  requestAnimationFrame(updateBattleViewportScale);
+});
+
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", updateBattleViewportScale);
+}
 
 function bindUnitSlotButton(button, summonFn) {
   if (!button || typeof summonFn !== "function") return;

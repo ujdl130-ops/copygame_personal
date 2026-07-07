@@ -414,8 +414,9 @@ function updateBattleViewportScale() {
   const baseWidth = 960;
   const baseHeight = 540;
   const maxScale = 2;
-  const availableWidth = Math.max(1, window.innerWidth);
-  const availableHeight = Math.max(1, window.innerHeight);
+  const viewport = window.visualViewport;
+  const availableWidth = Math.max(1, viewport ? viewport.width : window.innerWidth);
+  const availableHeight = Math.max(1, viewport ? viewport.height : window.innerHeight);
   const scale = Math.min(maxScale, availableWidth / baseWidth);
   const frameHeight = Math.min(baseHeight, availableHeight / scale);
   const rootStyle = document.documentElement.style;
