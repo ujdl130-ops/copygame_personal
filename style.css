@@ -17212,6 +17212,19 @@ body.in-formation .formation-screen .formation-category-nav {
   position: absolute !important;
 }
 
+body.in-formation .formation-screen #formationHeroLevelUpBtn,
+body.in-formation .formation-screen #formationUnitLevelUpBtn {
+  position: absolute !important;
+  left: 580px !important;
+  top: 768px !important;
+  right: auto !important;
+  bottom: auto !important;
+  z-index: 8 !important;
+  width: 310px !important;
+  min-height: 48px !important;
+  transform: translateX(-50%) !important;
+}
+
 /* Static lobby artwork: keep the navigation UI and remove the old animated scene. */
 .lobby-screen {
   background: #080b16 url("assets/lobby_bg.png") center / cover no-repeat;
