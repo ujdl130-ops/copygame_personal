@@ -618,7 +618,9 @@
       }
 
       if (screen.orientation && screen.orientation.lock) {
-        screen.orientation.lock("landscape").catch(() => {});
+        screen.orientation.lock("landscape-primary").catch(() => {
+          screen.orientation.lock("landscape").catch(() => {});
+        });
       }
     };
 
