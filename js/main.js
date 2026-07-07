@@ -211,14 +211,24 @@ window.addEventListener("keyup", (event) => {
   if (event.code === "Space") keys.Space = false;
 });
 
-window.addEventListener("resize", updateBattleViewportScale);
+function updateViewportScales() {
+  updateBattleViewportScale();
+  if (typeof updateFormationViewportScale === "function") {
+    updateFormationViewportScale();
+  }
+}
+
+window.addEventListener("resize", updateViewportScales);
 window.addEventListener("orientationchange", () => {
-  requestAnimationFrame(updateBattleViewportScale);
+  requestAnimationFrame(updateViewportScales);
 });
 
 if (window.visualViewport) {
-  window.visualViewport.addEventListener("resize", updateBattleViewportScale);
+  window.visualViewport.addEventListener("resize", updateViewportScales);
 }
+
+document.addEventListener("fullscreenchange", updateViewportScales);
+updateViewportScales();
 
 function bindUnitSlotButton(button, summonFn) {
   if (!button || typeof summonFn !== "function") return;

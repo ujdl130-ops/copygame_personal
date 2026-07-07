@@ -16,6 +16,11 @@
   --battle-visual-width: 1920px;
   --battle-visual-height: 1080px;
   --battle-frame-height: 540px;
+  --formation-design-width: 1920px;
+  --formation-design-height: 900px;
+  --formation-viewport-scale: 1;
+  --formation-viewport-offset-x: 0px;
+  --formation-viewport-offset-y: 0px;
 }
 
 body {
@@ -17167,6 +17172,32 @@ body:not(.game-started) .game-wrap {
     height: 22px !important;
     min-height: 22px !important;
   }
+}
+
+/* Formation viewport fit: keep the desktop artboard layout on mobile. */
+body.in-formation {
+  display: block !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  background: #000 url("assets/maps/formation/background.png") center / cover no-repeat !important;
+}
+
+body.in-formation::before {
+  content: none !important;
+}
+
+body.in-formation .formation-screen {
+  inset: 0 auto auto 0 !important;
+  width: var(--formation-design-width) !important;
+  height: var(--formation-design-height) !important;
+  min-width: var(--formation-design-width) !important;
+  min-height: var(--formation-design-height) !important;
+  transform: translate(var(--formation-viewport-offset-x), var(--formation-viewport-offset-y)) scale(var(--formation-viewport-scale)) !important;
+  transform-origin: top left !important;
 }
 
 /* Static lobby artwork: keep the navigation UI and remove the old animated scene. */

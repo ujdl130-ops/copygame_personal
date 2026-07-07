@@ -438,6 +438,33 @@ function updateBattleViewportScale() {
   rootStyle.setProperty("--battle-frame-height", `${frameHeight}px`);
 }
 
+function updateFormationViewportScale() {
+  const baseWidth = 1920;
+  const baseHeight = 900;
+  const viewport = window.visualViewport;
+  const doc = document.documentElement;
+  const availableWidth = Math.max(
+    1,
+    viewport ? viewport.width : 0,
+    doc ? doc.clientWidth : 0,
+    window.innerWidth || 0
+  );
+  const availableHeight = Math.max(
+    1,
+    viewport ? viewport.height : 0,
+    doc ? doc.clientHeight : 0,
+    window.innerHeight || 0
+  );
+  const scale = Math.min(availableWidth / baseWidth, availableHeight / baseHeight);
+  const offsetX = Math.max(0, (availableWidth - baseWidth * scale) / 2);
+  const offsetY = Math.max(0, (availableHeight - baseHeight * scale) / 2);
+  const rootStyle = document.documentElement.style;
+
+  rootStyle.setProperty("--formation-viewport-scale", scale.toFixed(4));
+  rootStyle.setProperty("--formation-viewport-offset-x", `${offsetX.toFixed(2)}px`);
+  rootStyle.setProperty("--formation-viewport-offset-y", `${offsetY.toFixed(2)}px`);
+}
+
 function bindMovementJoystick(joystick) {
   if (!joystick) return;
 
